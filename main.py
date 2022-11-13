@@ -79,8 +79,7 @@ if __name__ == '__main__':
     config = Config(double_buffer=True, depth_size=24, alpha_size=8)
 
     # Create an overlay window with Pyglet at the same size as our SoT Window
-    window = pyglet.window.Window(SOT_WINDOW_W, SOT_WINDOW_H,
-                                  vsync=False, style='overlay', config=config)
+    window = pyglet.window.Window(SOT_WINDOW_W, SOT_WINDOW_H, vsync=False, style='overlay', config=config)
     hwnd = window._hwnd  # pylint: disable=protected-access
 
     # Move our window to the same location that our SoT Window is at
@@ -120,8 +119,7 @@ if __name__ == '__main__':
     # Note: May not translate to actual FPS, but rather FPS of the program
     fps_display = pyglet.window.FPSDisplay(window)
 
-    # Our base player_count label in the top-right of our screen. Updated
-    # in on_draw()
+    # Our base player_count label in the top-right of our screen. Updated in on_draw()
     # player_count = Label("Player Count: {}", x=SOT_WINDOW_W * 0.85, y=SOT_WINDOW_H * 0.9, batch=main_batch)
 
     # The label for showing all players on the server under the count
