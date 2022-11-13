@@ -44,9 +44,33 @@ ships = {
     # },  # To implement, must modify ship.py's update method for visibility
 }
 athena = {
-    "BP_BountyRewardSkullItemInfo_Mythical_C": {
-        "Name": "Skull",
-    }
+    "BP_TreasureArtifact_ItemInfo_piratelegendimpressive_03_a_C": {
+        "Name": "Relic 1",
+    },
+    "BP_BountyRewardSkullItemInfo_PirateLegendUncommon_C": {
+        "Name": "Villainous Skull",
+    },
+    "BP_MerchantCrate_CommonPirateLegend_ItemInfo_C": {
+        "Name": "Crate",
+    },
+    "BP_trs_jar_leg_01_a_ItemInfo_C": {
+        "Name": "Jar",
+    },
+    "BP_trs_impressive__leg_01_a_proxy_C": {
+        "Name": "Relic 2",
+    },
+    "BP_trs_box_leg_01_a_Proxy_C": {
+        "Name": "Box",
+    },
+    "BP_TreasureChest_ItemInfo_PirateLegend_C": {
+        "Name": "Chest",
+    },
+    "BP_Treasure_Artifact_Proxy_piratelegendgoblet_02_a_C": {
+        "Name": "Chalice"
+    },
+    "": {
+        "Name": "Skull Blessing",
+    },
 }
 events = {
     "BP_SkellyShip_ShipCloud_C": {
@@ -61,9 +85,9 @@ events = {
     "BP_LegendSkellyFort_SkullCloud_C": {
         "Name": "Fort of Fortune",
     },
-    "": {
-        "Name": "",
-    },
+    # "BP_PhantomTornado_C": {
+    #     "Name": "Phantom Tornado",
+    # },  TODO Add athena event
     "": {
         "Name": "",
     },
