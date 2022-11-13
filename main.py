@@ -132,7 +132,7 @@ if __name__ == '__main__':
     # Note: The width of 300 is the max pixel width of a single line
     # before auto-wrapping the text to the next line. Updated in on_draw()
 
-    event = Label("", x=SOT_WINDOW_W * 0.5, y=SOT_WINDOW_H * 0.95, batch=main_batch)
+    event = Label("", x=SOT_WINDOW_W * 0.47, y=SOT_WINDOW_H * 0.94, batch=main_batch)
 
     # Runs our application and starts to use our scheduled events to show data
     pyglet.app.run()
