@@ -7,10 +7,12 @@ For community support, please contact me on Discord: DougTheDruid#2784
 import struct
 import logging
 from memory_helper import ReadMemory
-from mapping import ship_keys
+from mapping import ship_keys, athena_keys, event_keys
 from helpers import OFFSETS, CONFIG, logger
 from Modules.ship import Ship
 from Modules.crews import Crews
+from Modules.athena import Athena
+from Modules.event import Event
 
 
 class SoTMemoryReader:
@@ -71,7 +73,8 @@ class SoTMemoryReader:
         self.server_players = []
         self.display_objects = []
         self.crew_data = None
-
+        self.current_event = None
+        self.menu = False
 
     def _load_local_player(self) -> int:
         """
@@ -158,6 +161,10 @@ class SoTMemoryReader:
         actor_data = struct.unpack("<Qi", actor_raw)
 
         self.server_players = []
+
+        event_updated = False
+        self.menu = False
+        new_thing = False
         for x in range(0, actor_data[1]):
             # We start by getting the ActorID for a given actor, and comparing
             # that ID to a list of "known" id's we cache in self.actor_name_map
@@ -182,6 +189,13 @@ class SoTMemoryReader:
             if not raw_name:
                 continue
 
+            if raw_name == "BP_FrontendHUD_C":
+                self.menu = True
+
+            if raw_name:
+                print(raw_name)
+                new_thing = True
+
             # If we have Ship ESP enabled in helpers.py, and the name of the
             # actor is in our mapping.py ship_keys object, interpret the actor
             # as a ship
@@ -200,3 +214,19 @@ class SoTMemoryReader:
             # sake of ESP
             elif CONFIG.get('CREWS_ENABLED') and raw_name == "CrewService":
                 self.crew_data = Crews(self.rm, actor_id, actor_address)
+
+            elif CONFIG.get('ATHENA_ENABLED') and raw_name in athena_keys:
+                athena = Athena(self.rm, actor_id, actor_address, self.my_coords, raw_name)
+                self.display_objects.append(athena)
+
+            elif CONFIG.get("EVENTS_ENABLED") and raw_name in event_keys:
+                event = Event(self.rm, actor_id, actor_address, self.my_coords, raw_name)
+                self.current_event = event.name
+                self.display_objects.append(event)
+                event_updated = True
+
+        if not event_updated:
+            self.current_event = None
+
+        if not new_thing:
+            self.menu = True

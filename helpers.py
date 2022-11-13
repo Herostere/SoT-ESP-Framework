@@ -13,8 +13,10 @@ from pyglet.text import Label
 
 # True=Enabled & False=Disabled for each of the config items
 CONFIG = {
-    "CREWS_ENABLED": True,
-    "SHIPS_ENABLED": False
+    "CREWS_ENABLED": False,
+    "SHIPS_ENABLED": False,
+    "ATHENA_ENABLED": True,
+    "EVENTS_ENABLED": True,
 }
 
 # Used to track unique crews
@@ -64,8 +66,7 @@ def dot(array_1: tuple, array_2: tuple) -> float:
     if array_2[0] == 0 and array_2[1] == 0 and array_2[2] == 0:
         return 0.0
 
-    return array_1[0] * array_2[0] + array_1[1] \
-           * array_2[1] + array_1[2] * array_2[2]
+    return array_1[0] * array_2[0] + array_1[1] * array_2[1] + array_1[2] * array_2[2]
 
 
 def object_to_screen(player: dict, actor: dict) -> tuple:
@@ -177,6 +178,6 @@ def calculate_distance(obj_to: dict, obj_from: dict) -> int:
                          (obj_to.get("z") - obj_from.get("z")) ** 2))
 
 
-b_label = Label(base64.b64decode('RG91Z1RoZURydWlkJ3MgRVNQIEZyYW1ld29yaw==').decode("utf-8"),
-                x=SOT_WINDOW_W - 537, y=10, font_size=24, bold=True,
-                color=(127, 127, 127, 65), batch=main_batch)
+# b_label = Label(base64.b64decode('RG91Z1RoZURydWlkJ3MgRVNQIEZyYW1ld29yaw==').decode("utf-8"),
+#                 x=SOT_WINDOW_W - 537, y=10, font_size=24, bold=True,
+#                 color=(127, 127, 127, 65), batch=main_batch)
