@@ -15,6 +15,9 @@ from Modules.athena import Athena
 from Modules.event import Event
 
 
+hell_actors = []
+
+
 class SoTMemoryReader:
     """
     Wrapper class to handle reading data from the game, parsing what is
@@ -75,6 +78,7 @@ class SoTMemoryReader:
         self.crew_data = None
         self.current_event = None
         self.menu = False
+        self.actors = []
 
     def _load_local_player(self) -> int:
         """
@@ -148,9 +152,6 @@ class SoTMemoryReader:
         for display_ob in self.display_objects:
             try:
                 display_ob.text_render.delete()
-            except:
-                continue
-            try:
                 display_ob.icon.delete()
             except:
                 continue
@@ -164,7 +165,7 @@ class SoTMemoryReader:
 
         event_updated = False
         self.menu = False
-        new_thing = False
+        no_actors = True
         for x in range(0, actor_data[1]):
             # We start by getting the ActorID for a given actor, and comparing
             # that ID to a list of "known" id's we cache in self.actor_name_map
@@ -191,10 +192,14 @@ class SoTMemoryReader:
 
             if raw_name == "BP_FrontendHUD_C":
                 self.menu = True
+                no_actors = False
 
             if raw_name:
+                no_actors = False
+
+            if raw_name and raw_name not in hell_actors:
                 print(raw_name)
-                new_thing = True
+                hell_actors.append(raw_name)
 
             # If we have Ship ESP enabled in helpers.py, and the name of the
             # actor is in our mapping.py ship_keys object, interpret the actor
@@ -228,5 +233,5 @@ class SoTMemoryReader:
         if not event_updated:
             self.current_event = None
 
-        if not new_thing:
+        if no_actors:
             self.menu = True
