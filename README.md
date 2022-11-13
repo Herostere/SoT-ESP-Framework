@@ -164,16 +164,16 @@ https://github.com/DougTheDruid/SoT-Actor-Names - A manually-created list that m
 - Automatically update the pyglet window location every X seconds to match SoT window location
 - Handle weird issue where pyglet doesn't match the actual SoTWindow. This is caused by the fading around Windows.
 Potential fix in `main.py`:
-   ```python
-    window = pyglet.window.Window(SOT_WINDOW_W-20, SOT_WINDOW_H-10,
-                                  vsync=False, style='overlay',
-                                  caption="DougTheDruid's ESP Framework")
-    # window.set_caption('A different caption')
-    hwnd = window._hwnd  # pylint: disable=protected-access
+```python
+window = pyglet.window.Window(SOT_WINDOW_W-20, SOT_WINDOW_H-10,
+                              vsync=False, style='overlay',
+                              caption="DougTheDruid's ESP Framework")
+# window.set_caption('A different caption')
+hwnd = window._hwnd  # pylint: disable=protected-access
 
-    # Move our window to the same location that our SoT Window is at
-    window.set_location(SOT_WINDOW[0]+8, SOT_WINDOW[1])
-   ```
+# Move our window to the same location that our SoT Window is at
+window.set_location(SOT_WINDOW[0]+8, SOT_WINDOW[1])
+```
 - Update to calculate actual FOV correctly:
   Suspect its an issue with the "world to screen" method. Changing fov calculation to 
    ```
