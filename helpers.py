@@ -17,6 +17,7 @@ CONFIG = {
     "SHIPS_ENABLED": False,
     "ATHENA_ENABLED": True,
     "EVENTS_ENABLED": True,
+    "OTHER_EVENTS_ENABLED": True,
 }
 
 # Used to track unique crews
