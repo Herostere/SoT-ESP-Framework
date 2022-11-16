@@ -56,7 +56,7 @@ athena = {
     "BP_trs_jar_leg_01_a_ItemInfo_C": {
         "Name": "Jar",
     },
-    "BP_trs_impressive__leg_01_a_proxy_C": {
+    "BP_trs_impressive_leg_01_a_ItemInfo_C": {
         "Name": "Relic 2",
     },
     "BP_trs_box_leg_01_a_Proxy_C": {
@@ -65,11 +65,20 @@ athena = {
     "BP_TreasureChest_ItemInfo_PirateLegend_C": {
         "Name": "Chest",
     },
-    "BP_Treasure_Artifact_Proxy_piratelegendgoblet_02_a_C": {
+    "BP_TreasureArtifact_ItemInfo_piratelegend_goblet_02_a_C": {
         "Name": "Chalice"
     },
-    "": {
+    "BP_PirateLegends_SWG_Key_Proxy_C": {
+        "Name": "Key",
+    },
+    "BP_BountyRewardSkull_Proxy_PirateLegendCommon_C": {
+        "Name": "Skull",
+    },
+    "BP_trs_leg_crain__leg_01_a_ItemInfo_C": {
         "Name": "Skull Blessing",
+    },
+    "BP_trs_dark_shark_leg_01_a_ItemInfo_C": {
+        "Name": "Dark Shark",
     },
 }
 events = {
@@ -85,17 +94,24 @@ events = {
     "BP_LegendSkellyFort_SkullCloud_C": {
         "Name": "Fort of Fortune",
     },
-    # "BP_PhantomTornado_C": {
-    #     "Name": "Phantom Tornado",
-    # },  TODO Add athena event
-    "": {
-        "Name": "",
+    "BP_Kraken_C": {
+        "Name": "Kraken",
     },
     "": {
         "Name": "",
     },
 }
 
+other_events = {
+    "BP_PhantomTornado_C": {
+        "Name": "Phantom Tornado",
+    },
+}
+
+# TODO add legend of the veil
+# BP_PL_Sudds_VisitNPC_C
+
 ship_keys = set(ships.keys())
 athena_keys = set(athena.keys())
 event_keys = set(events.keys())
+other_keys = set(other_events.keys())
