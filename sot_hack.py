@@ -7,12 +7,13 @@ For community support, please contact me on Discord: DougTheDruid#2784
 import struct
 import logging
 from memory_helper import ReadMemory
-from mapping import ship_keys, athena_keys, event_keys
+from mapping import ship_keys, athena_keys, event_keys, other_keys
 from helpers import OFFSETS, CONFIG, logger
 from Modules.ship import Ship
 from Modules.crews import Crews
 from Modules.athena import Athena
 from Modules.event import Event
+from Modules.other import Other
 
 
 hell_actors = []
@@ -229,6 +230,11 @@ class SoTMemoryReader:
                 self.current_event = event.name
                 self.display_objects.append(event)
                 event_updated = True
+
+            elif CONFIG.get("OTHER_EVENTS_ENABLED") and raw_name in other_keys:
+                other = Other(self.rm, actor_id, actor_address, self.my_coords, raw_name)
+                # todo add a text on screen for the tornado
+                self.display_objects.append(other)
 
         if not event_updated:
             self.current_event = None
