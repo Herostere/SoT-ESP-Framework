@@ -106,6 +106,15 @@ other_events = {
     "BP_PhantomTornado_C": {
         "Name": "Phantom Tornado",
     },
+    "BP_PL_Belle_InteractionBlocker_C": {
+        "Name": "Belle",
+    },
+    "BP_PL_HauntedBrazier_C": {
+        "Name": "Haunted Brazier",
+    },
+    "BP_HauntedIsalnd_FinalBeacon_C": {
+        "Name": "Final Brazier",
+    },
 }
 
 # TODO add legend of the veil
